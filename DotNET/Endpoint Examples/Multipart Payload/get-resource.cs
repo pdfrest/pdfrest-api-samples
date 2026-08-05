@@ -33,14 +33,6 @@ namespace Samples.EndpointExamples.MultipartPayload
             var id = args[0];
             var outPath = args.Length > 1 ? args[1] : "resource.bin";
 
-            var apiKey = Environment.GetEnvironmentVariable("PDFREST_API_KEY");
-            if (string.IsNullOrWhiteSpace(apiKey))
-            {
-                Console.Error.WriteLine("Missing required environment variable: PDFREST_API_KEY");
-                Environment.Exit(1);
-                return;
-            }
-
             var baseUrl = Environment.GetEnvironmentVariable("PDFREST_URL") ?? "https://api.pdfrest.com";
             var resourceBase = baseUrl.TrimEnd('/') + "/resource/";
 
@@ -50,7 +42,6 @@ namespace Samples.EndpointExamples.MultipartPayload
                 {
                     using (var request = new HttpRequestMessage(HttpMethod.Get, id + "?format=file"))
                     {
-                        request.Headers.TryAddWithoutValidation("Api-Key", apiKey);
                         using (var response = await httpClient.SendAsync(request))
                         {
                             response.EnsureSuccessStatusCode();

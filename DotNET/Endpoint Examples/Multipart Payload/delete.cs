@@ -1,7 +1,7 @@
 /*
  * What this sample does:
  * - Deletes multiple resources by ids.
- * - Routed from Program.cs as: `dotnet run -- batch-delete-multipart <id1> [id2] [...]`.
+ * - Routed from Program.cs as: `dotnet run -- delete-multipart <id1> [id2] [...]`.
  *
  * Setup (environment):
  * - Copy .env.example to .env
@@ -11,7 +11,7 @@
  *   For more information visit https://pdfrest.com/pricing#how-do-eu-gdpr-api-calls-work
  *
  * Usage:
- *   dotnet run -- batch-delete-multipart id1 id2 id3
+ *   dotnet run -- delete-multipart id1 id2 id3
  *
  * Output:
  * - Prints the JSON response. Validation errors (args/env) exit non-zero.
@@ -19,13 +19,13 @@
 
 namespace Samples.EndpointExamples.MultipartPayload
 {
-    public static class BatchDelete
+    public static class Delete
     {
         public static async Task Execute(string[] args)
         {
             if (args == null || args.Length < 1)
             {
-                Console.Error.WriteLine("batch-delete-multipart requires <id1> [id2] [...]");
+                Console.Error.WriteLine("delete-multipart requires <id1> [id2] [...]");
                 Environment.Exit(1);
                 return;
             }

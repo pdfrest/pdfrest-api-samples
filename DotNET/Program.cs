@@ -56,7 +56,7 @@ static void PrintUsage()
     Console.Error.WriteLine("    upload <file>                      Upload file (resource id)");
     Console.Error.WriteLine("    get-resource <id> [out]            Download resource");
     Console.Error.WriteLine("    delete-resource <id>               Delete resource");
-    Console.Error.WriteLine("    batch-delete <id1> [id2] [...]     Delete multiple resources");
+    Console.Error.WriteLine("    delete <id1> [id2] [...]     Delete multiple resources");
     Console.Error.WriteLine("    zip <file1> <file2>                Zip two resources");
     Console.Error.WriteLine("    unzip <zipFile>                    Unzip resource");
     Console.Error.WriteLine("    signed-pdf <pdf> <pfx> <pass> <logo>     Sign PDF with PFX");
@@ -109,7 +109,7 @@ static void PrintUsage()
     Console.Error.WriteLine("    upload-multipart <file>            Upload file (resource id)");
     Console.Error.WriteLine("    get-resource-multipart <id> [out]  Download resource");
     Console.Error.WriteLine("    delete-resource-multipart <id>     Delete resource");
-    Console.Error.WriteLine("    batch-delete-multipart <id1> [id2] [...]  Delete multiple resources");
+    Console.Error.WriteLine("    delete-multipart <id1> [id2] [...]  Delete multiple resources");
     Console.Error.WriteLine("    zip-multipart <f1> <f2>            Zip two files");
     Console.Error.WriteLine("    unzip-multipart <zipFile>          Unzip resource");
     Console.Error.WriteLine("    signed-pdf-multipart <pdf> <pfx> <pass> <logo>    Sign PDF with PFX");
@@ -129,6 +129,7 @@ static void PrintUsage()
     Console.Error.WriteLine("Environment (.env supported):");
     Console.Error.WriteLine("  PDFREST_API_KEY=...    Required API key");
     Console.Error.WriteLine("  PDFREST_URL=...        Optional base URL (e.g., https://eu-api.pdfrest.com for EU/GDPR)");
+    Console.Error.WriteLine("  PDFREST_DELETE_SENSITIVE_FILES  Optional immediate deletion (true|false; default false)\n");
 }
 
 // Entry point
@@ -269,11 +270,11 @@ switch (cmd)
     case "delete-resource-multipart":
         await Samples.EndpointExamples.MultipartPayload.DeleteResource.Execute(rest);
         break;
-    case "batch-delete":
-        await Samples.EndpointExamples.JsonPayload.BatchDelete.Execute(rest);
+    case "delete":
+        await Samples.EndpointExamples.JsonPayload.Delete.Execute(rest);
         break;
-    case "batch-delete-multipart":
-        await Samples.EndpointExamples.MultipartPayload.BatchDelete.Execute(rest);
+    case "delete-multipart":
+        await Samples.EndpointExamples.MultipartPayload.Delete.Execute(rest);
         break;
     case "png":
         await Samples.EndpointExamples.JsonPayload.Png.Execute(rest);

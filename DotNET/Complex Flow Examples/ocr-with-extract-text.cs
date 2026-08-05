@@ -64,7 +64,7 @@ namespace Samples.ComplexFlowExamples
                 Console.WriteLine("OCR response received.");
                 Console.WriteLine(ocrResult);
                 var ocrJson = JObject.Parse(ocrResult);
-                var ocrPDFID = (string?) (ocrJson["outputId"] ?? ocrJson["id"] ?? ocrJson["files"]?[0]? ["id"]);
+                var ocrPDFID = (string?)(ocrJson["outputId"] ?? ocrJson["id"] ?? ocrJson["files"]?[0]?["id"]);
                 if (string.IsNullOrWhiteSpace(ocrPDFID))
                 {
                     Console.Error.WriteLine("Failed to obtain OCR output id. Full response:");

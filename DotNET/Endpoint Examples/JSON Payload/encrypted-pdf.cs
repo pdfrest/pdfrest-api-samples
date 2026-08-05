@@ -103,8 +103,12 @@ namespace Samples.EndpointExamples.JsonPayload
                         //
                         // Deletes all files in the workflow, including outputs. Save all desired files before enabling this step.
 
-                        // Toggle deletion of sensitive files (default: false)
-                        var deleteSensitiveFiles = false;
+                        // Optional immediate deletion of sensitive files
+                        // Default: false; override with PDFREST_DELETE_SENSITIVE_FILES=true
+                        var deleteSensitiveFiles = string.Equals(
+                            Environment.GetEnvironmentVariable("PDFREST_DELETE_SENSITIVE_FILES"),
+                            "true",
+                            StringComparison.OrdinalIgnoreCase);
 
                         if (deleteSensitiveFiles)
                         {
