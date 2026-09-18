@@ -19,12 +19,14 @@ static void PrintUsage()
     Console.Error.WriteLine("    postscript <pdf>                   Convert PDF to PostScript");
     Console.Error.WriteLine("    pdf-from-markdown|csv|json|xml|text <file>  Structured input to PDF");
     Console.Error.WriteLine("    pdfa <file>                        Convert to PDF/A");
+    Console.Error.WriteLine("    zugferd-pdf <xml> <pdf>            Create a ZUGFeRD / Factur-X PDF/A-3 invoice");
     Console.Error.WriteLine("    pdfx <file>                        Convert to PDF/X");
     Console.Error.WriteLine("    tdm-reserved-pdf <pdf>             Apply TDM rights metadata");
     Console.Error.WriteLine("    png|jpg|gif|bmp <file>             Convert to image format");
     Console.Error.WriteLine("    word|excel|powerpoint|tif <file>   Convert to Office/TIFF");
     Console.Error.WriteLine("  Info / Extract:");
     Console.Error.WriteLine("    pdf-info <pdf>                     Document properties and stats");
+    Console.Error.WriteLine("    validated-zugferd <pdf>            Validate a ZUGFeRD / Factur-X PDF");
     Console.Error.WriteLine("    extracted-text <pdf>               Extract text to JSON");
     Console.Error.WriteLine("    summarized-pdf-text <pdf>          Summarize text");
     Console.Error.WriteLine("    translated-pdf-text <pdf>          Translate text");
@@ -77,12 +79,14 @@ static void PrintUsage()
     Console.Error.WriteLine("    markdown-multipart <file>          Convert to Markdown");
     Console.Error.WriteLine("    rasterized-pdf-multipart <pdf>     Rasterize PDF");
     Console.Error.WriteLine("    pdfa-multipart <file>              Convert to PDF/A");
+    Console.Error.WriteLine("    zugferd-pdf-multipart <xml> <pdf>  Create a ZUGFeRD / Factur-X PDF/A-3 invoice");
     Console.Error.WriteLine("    pdfx-multipart <file>              Convert to PDF/X");
     Console.Error.WriteLine("    tdm-reserved-pdf-multipart <pdf>   Apply TDM rights metadata");
     Console.Error.WriteLine("    png-multipart|jpg-multipart|gif-multipart|bmp-multipart|tif-multipart <file>  Convert to image");
     Console.Error.WriteLine("    word-multipart|excel-multipart|powerpoint-multipart <file>  Convert Office");
     Console.Error.WriteLine("  Info / Extract:");
     Console.Error.WriteLine("    pdf-info-multipart <pdf>           Document properties and stats");
+    Console.Error.WriteLine("    validated-zugferd-multipart <pdf>  Validate a ZUGFeRD / Factur-X PDF");
     Console.Error.WriteLine("    extracted-text-multipart <pdf>     Extract text to JSON");
     Console.Error.WriteLine("    summarized-pdf-text-multipart <pdf>  Summarize text");
     Console.Error.WriteLine("    translated-pdf-text-multipart <pdf>  Translate text");
@@ -197,6 +201,12 @@ switch (cmd)
     case "pdf-from-text":
         await Samples.EndpointExamples.JsonPayload.PdfFromText.Execute(rest);
         break;
+    case "zugferd-pdf":
+        await Samples.EndpointExamples.JsonPayload.ZugferdPdf.Execute(rest);
+        break;
+    case "validated-zugferd":
+        await Samples.EndpointExamples.JsonPayload.ValidatedZugferd.Execute(rest);
+        break;
     case "pdf-from-email-multipart":
         await Samples.EndpointExamples.MultipartPayload.PdfFromEmail.Execute(rest);
         break;
@@ -220,6 +230,12 @@ switch (cmd)
         break;
     case "pdf-from-text-multipart":
         await Samples.EndpointExamples.MultipartPayload.PdfFromText.Execute(rest);
+        break;
+    case "zugferd-pdf-multipart":
+        await Samples.EndpointExamples.MultipartPayload.ZugferdPdf.Execute(rest);
+        break;
+    case "validated-zugferd-multipart":
+        await Samples.EndpointExamples.MultipartPayload.ValidatedZugferd.Execute(rest);
         break;
     case "markdown-multipart":
         await Samples.EndpointExamples.MultipartPayload.Markdown.Execute(rest);
