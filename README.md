@@ -61,6 +61,10 @@ To delete sensitive files immediately after processing, edit the sample file and
 
 ## API Documentation
 
+### Search, highlight, redact, and replace
+
+The [search and modify examples](search-and-modify-examples.md) cover Search PDF, AI Search PDF, Highlight PDF, and Replace PDF Text, plus workflows that pass Search PDF results to Highlight PDF, Redact PDF, or Replace PDF Text. All examples are available in C#, Java, JavaScript, PHP, Python, and cURL, with both JSON resource-ID and multipart payloads.
+
 After you have successfully sent an API Call using these examples, take a look at the [API Reference Guide](https://docs.pdfrest.com/cloud-api-reference/) for a full description of each endpoint and parameters you can adjust to customize your solution.
 
 <br>
