@@ -155,6 +155,12 @@ static void PrintUsage()
     Console.Error.WriteLine("  search-and-redact-multipart <pdf>");
     Console.Error.WriteLine("  search-and-replace <pdf>");
     Console.Error.WriteLine("  search-and-replace-multipart <pdf>");
+    Console.Error.WriteLine("  ai-search-and-highlight <pdf>");
+    Console.Error.WriteLine("  ai-search-and-highlight-multipart <pdf>");
+    Console.Error.WriteLine("  ai-search-and-redact <pdf>");
+    Console.Error.WriteLine("  ai-search-and-redact-multipart <pdf>");
+    Console.Error.WriteLine("  ai-search-and-replace <pdf>");
+    Console.Error.WriteLine("  ai-search-and-replace-multipart <pdf>");
     Console.Error.WriteLine();
     Console.Error.WriteLine("Environment (.env supported):");
     Console.Error.WriteLine("  PDFREST_API_KEY=...    Required API key");
@@ -216,6 +222,24 @@ switch (cmd)
         break;
     case "search-and-replace-multipart":
         await Samples.ComplexFlowExamples.SearchAndReplaceMultipart.Execute(rest);
+        break;
+    case "ai-search-and-highlight":
+        await Samples.ComplexFlowExamples.AiSearchAndHighlight.Execute(rest);
+        break;
+    case "ai-search-and-highlight-multipart":
+        await Samples.ComplexFlowExamples.AiSearchAndHighlightMultipart.Execute(rest);
+        break;
+    case "ai-search-and-redact":
+        await Samples.ComplexFlowExamples.AiSearchAndRedact.Execute(rest);
+        break;
+    case "ai-search-and-redact-multipart":
+        await Samples.ComplexFlowExamples.AiSearchAndRedactMultipart.Execute(rest);
+        break;
+    case "ai-search-and-replace":
+        await Samples.ComplexFlowExamples.AiSearchAndReplace.Execute(rest);
+        break;
+    case "ai-search-and-replace-multipart":
+        await Samples.ComplexFlowExamples.AiSearchAndReplaceMultipart.Execute(rest);
         break;
     case "summarized-pdf-text":
         await Samples.EndpointExamples.JsonPayload.SummarizedPdfText.Execute(rest);

@@ -31,16 +31,27 @@ These examples are in each language's `Complex Flow Examples` directory. The fil
 | Search → Highlight | `search-and-highlight` | `search-and-highlight-multipart` | `SearchAndHighlight`, `SearchAndHighlightMultipart` |
 | Search → Redact preview → Apply | `search-and-redact` | `search-and-redact-multipart` | `SearchAndRedact`, `SearchAndRedactMultipart` |
 | Search → Replace | `search-and-replace` | `search-and-replace-multipart` | `SearchAndReplace`, `SearchAndReplaceMultipart` |
+| AI Search → Highlight | `ai-search-and-highlight` | `ai-search-and-highlight-multipart` | `AiSearchAndHighlight`, `AiSearchAndHighlightMultipart` |
+| AI Search → Redact preview → Apply | `ai-search-and-redact` | `ai-search-and-redact-multipart` | `AiSearchAndRedact`, `AiSearchAndRedactMultipart` |
+| AI Search → Replace | `ai-search-and-replace` | `ai-search-and-replace-multipart` | `AiSearchAndReplace`, `AiSearchAndReplaceMultipart` |
 
 The workflows request inline JSON search output and mark the point where your program can filter `matches`. They retain all matches by default and stop without modifying a PDF when no matches are found.
 
-Highlight and redaction accept retained results without additional match fields. Replacement requires adding `replacement` to every retained match; each match can have different replacement text and an optional `layout_mode`. The examples add `"replacement": "Final"` to each `Draft` match. This differs from a direct replacement rule, which applies the same replacement to all matches of that rule.
+The AI workflows demonstrate discovery that ordinary Search cannot perform by meaning alone:
 
-Replacement examples omit `layout_mode` to use the default `reflow`. Other modes are described in the API Reference. A replacement that cannot be completed safely fails the call rather than silently changing modes. Starter search results may contain masked text, which cannot validate as original text for replacement; use an entitled account for this search-to-replacement workflow or evaluate direct replacement with watermarked output.
+- **AI Search → Highlight:** A custom description finds obligations to keep information private, even when the text does not say “confidential.” No exact clause wording or regex is supplied.
+- **AI Search → Redact:** The `potential_pii` category identifies potentially identifying content, including names and addresses that were not supplied in advance. Ordinary Search's pattern presets can find formatted values such as email addresses, but do not identify all potential PII by context.
+- **AI Search → Replace:** The `person_name` category identifies names without a supplied list of people, then replaces retained names with `Person`.
+
+AI Search is Cloud-only. Review returned text and confidence for accuracy and completeness before modifying content; the examples mark where your program can remove unwanted findings. AI Search chooses the text to act on, while Highlight, Redact, and Replace consume its page coordinates using the same selection format as ordinary Search.
+
+Highlight and redaction accept retained results without additional match fields. Replacement requires adding `replacement` to every retained match; each match can have different replacement text and an optional `layout_mode`. The deterministic search-to-replacement examples add `"replacement": "Final"` to each `Draft` match; the AI examples add `"replacement": "Person"` to each discovered name. This differs from a direct replacement rule, which applies the same replacement to all matches of that rule.
+
+The deterministic replacement examples omit `layout_mode` to use the default `reflow`. The AI name-replacement examples explicitly use `shrink_to_fit` to preserve surrounding text positions when multiple names occur in the same paragraph. Other modes are described in the API Reference. A replacement that cannot be completed safely fails the call rather than silently changing modes. Starter search results may contain masked text, which cannot validate as original text for replacement; use an entitled account for this search-to-replacement workflow or evaluate direct replacement with watermarked output.
 
 Redaction previews contain annotations, not permanently removed content. The workflow prints the preview response and immediately applies it to demonstrate both steps. In a review workflow, inspect the preview before making the apply request.
 
-Results are printed as JSON. For PDF outputs, use the returned `outputId` with the language's existing get-resource sample to download the file. AI Search–to–action workflows are not included in this set.
+Results are printed as JSON. For PDF outputs, use the returned `outputId` with the language's existing get-resource sample to download the file.
 
 ## Language directories
 
