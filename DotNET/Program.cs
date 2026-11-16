@@ -140,6 +140,22 @@ static void PrintUsage()
     Console.Error.WriteLine("  create-invoice-from-structured-data         Generate invoice from JSON and CSV\n");
     Console.Error.WriteLine("  refry-pdf <pdf> <jobOptions> [outputPdf]    Convert PDF to PostScript and back\n");
 
+    Console.Error.WriteLine("Search and modify (JSON by default; -multipart sends multipart/form-data):");
+    Console.Error.WriteLine("  search-results <pdf>");
+    Console.Error.WriteLine("  search-results-multipart <pdf>");
+    Console.Error.WriteLine("  ai-search-results <pdf>");
+    Console.Error.WriteLine("  ai-search-results-multipart <pdf>");
+    Console.Error.WriteLine("  pdf-with-highlighted-text <pdf>");
+    Console.Error.WriteLine("  pdf-with-highlighted-text-multipart <pdf>");
+    Console.Error.WriteLine("  pdf-with-replaced-text <pdf>");
+    Console.Error.WriteLine("  pdf-with-replaced-text-multipart <pdf>");
+    Console.Error.WriteLine("  search-and-highlight <pdf>");
+    Console.Error.WriteLine("  search-and-highlight-multipart <pdf>");
+    Console.Error.WriteLine("  search-and-redact <pdf>");
+    Console.Error.WriteLine("  search-and-redact-multipart <pdf>");
+    Console.Error.WriteLine("  search-and-replace <pdf>");
+    Console.Error.WriteLine("  search-and-replace-multipart <pdf>");
+    Console.Error.WriteLine();
     Console.Error.WriteLine("Environment (.env supported):");
     Console.Error.WriteLine("  PDFREST_API_KEY=...    Required API key");
     Console.Error.WriteLine("  PDFREST_URL=...        Optional base URL (e.g., https://eu-api.pdfrest.com for EU/GDPR)");
@@ -159,6 +175,48 @@ var rest = argv.Skip(1).ToArray();
 
 switch (cmd)
 {
+    case "search-results":
+        await Samples.EndpointExamples.JsonPayload.SearchResults.Execute(rest);
+        break;
+    case "search-results-multipart":
+        await Samples.EndpointExamples.MultipartPayload.SearchResults.Execute(rest);
+        break;
+    case "ai-search-results":
+        await Samples.EndpointExamples.JsonPayload.AiSearchResults.Execute(rest);
+        break;
+    case "ai-search-results-multipart":
+        await Samples.EndpointExamples.MultipartPayload.AiSearchResults.Execute(rest);
+        break;
+    case "pdf-with-highlighted-text":
+        await Samples.EndpointExamples.JsonPayload.PdfWithHighlightedText.Execute(rest);
+        break;
+    case "pdf-with-highlighted-text-multipart":
+        await Samples.EndpointExamples.MultipartPayload.PdfWithHighlightedText.Execute(rest);
+        break;
+    case "pdf-with-replaced-text":
+        await Samples.EndpointExamples.JsonPayload.PdfWithReplacedText.Execute(rest);
+        break;
+    case "pdf-with-replaced-text-multipart":
+        await Samples.EndpointExamples.MultipartPayload.PdfWithReplacedText.Execute(rest);
+        break;
+    case "search-and-highlight":
+        await Samples.ComplexFlowExamples.SearchAndHighlight.Execute(rest);
+        break;
+    case "search-and-highlight-multipart":
+        await Samples.ComplexFlowExamples.SearchAndHighlightMultipart.Execute(rest);
+        break;
+    case "search-and-redact":
+        await Samples.ComplexFlowExamples.SearchAndRedact.Execute(rest);
+        break;
+    case "search-and-redact-multipart":
+        await Samples.ComplexFlowExamples.SearchAndRedactMultipart.Execute(rest);
+        break;
+    case "search-and-replace":
+        await Samples.ComplexFlowExamples.SearchAndReplace.Execute(rest);
+        break;
+    case "search-and-replace-multipart":
+        await Samples.ComplexFlowExamples.SearchAndReplaceMultipart.Execute(rest);
+        break;
     case "summarized-pdf-text":
         await Samples.EndpointExamples.JsonPayload.SummarizedPdfText.Execute(rest);
         break;
