@@ -3,12 +3,10 @@
 # Find people and medication names with AI Search PDF (Cloud only). Review results for accuracy and completeness.
 set -eu
 
-# By default, we use the US-based API service. This is the primary endpoint for global use.
+# AI Search PDF is available on the US Cloud service only.
 API_URL="https://api.pdfrest.com"
 
-# For GDPR compliance and enhanced performance for European users, you can switch to the EU-based service by uncommenting the URL below.
-# For more information visit https://pdfrest.com/pricing#how-do-eu-gdpr-api-calls-work
-# API_URL="https://eu-api.pdfrest.com"
+# AI Search PDF is unavailable on the EU service and in self-hosted deployments.
 
 API_KEY="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # Replace with your API key.
 

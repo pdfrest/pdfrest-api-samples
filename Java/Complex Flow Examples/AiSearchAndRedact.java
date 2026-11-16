@@ -13,13 +13,10 @@ import org.json.JSONObject;
 // Use AI to find potential PII, including unknown names and addresses, then redact retained
 // matches. Review AI findings before applying.
 public class AiSearchAndRedact {
-  // By default, we use the US-based API service. This is the primary endpoint for global use.
+  // AI Search PDF is available on the US Cloud service only.
   private static final String API_URL = "https://api.pdfrest.com";
 
-  // For GDPR compliance and enhanced performance for European users, use the EU-based service
-  // instead.
-  // For more information visit https://pdfrest.com/pricing#how-do-eu-gdpr-api-calls-work
-  // private static final String API_URL = "https://eu-api.pdfrest.com";
+  // AI Search PDF is unavailable on the EU service and in self-hosted deployments.
 
   // Specify your API key here, or in PDFREST_API_KEY in the environment or a .env file.
   private static final String DEFAULT_API_KEY = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";

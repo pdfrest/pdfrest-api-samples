@@ -1,6 +1,6 @@
 # Search and modify PDF text
 
-Search PDF finds exact text, regular expressions, or pattern presets and returns JSON containing matched text and page coordinates without changing the PDF. AI Search PDF finds content by category or a description; it is available in Cloud only, and its results should be reviewed for accuracy and completeness. Both search tools operate on PDF text, including existing OCR text, rather than reading image pixels.
+Search PDF finds exact text, regular expressions, or pattern presets and returns JSON containing matched text and page coordinates without changing the PDF. AI Search PDF finds content by category or a description; it is available on the US Cloud service only, and its results should be reviewed for accuracy and completeness. Both search tools operate on PDF text, including existing OCR text, rather than reading image pixels.
 
 Highlight PDF and Replace PDF Text can find their own matches in a single request; no separate search is required. Redact PDF also supports direct searches through the existing redaction preview and apply examples.
 
@@ -43,7 +43,7 @@ The AI workflows demonstrate discovery that ordinary Search cannot perform by me
 - **AI Search → Redact:** The `potential_pii` category identifies potentially identifying content, including names and addresses that were not supplied in advance. Ordinary Search's pattern presets can find formatted values such as email addresses, but do not identify all potential PII by context.
 - **AI Search → Replace:** The `person_name` category identifies names without a supplied list of people, then replaces retained names with `Person`.
 
-AI Search is Cloud-only. Review returned text and confidence for accuracy and completeness before modifying content; the examples mark where your program can remove unwanted findings. AI Search chooses the text to act on, while Highlight, Redact, and Replace consume its page coordinates using the same selection format as ordinary Search.
+AI Search uses `https://api.pdfrest.com` and is unavailable on the EU service and in self-hosted deployments. For .NET examples, leave `PDFREST_URL` unset or set it to the US service. Review returned text and confidence for accuracy and completeness before modifying content; the examples mark where your program can remove unwanted findings. AI Search chooses the text to act on, while Highlight, Redact, and Replace consume its page coordinates using the same selection format as ordinary Search.
 
 Highlight and redaction accept retained results without additional match fields. Replacement requires adding `replacement` to every retained match; each match can have different replacement text and an optional `layout_mode`. The deterministic search-to-replacement examples add `"replacement": "Final"` to each `Draft` match; the AI examples add `"replacement": "Person"` to each discovered name. This differs from a direct replacement rule, which applies the same replacement to all matches of that rule.
 

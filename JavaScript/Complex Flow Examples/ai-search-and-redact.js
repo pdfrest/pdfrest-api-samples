@@ -2,13 +2,10 @@
 const axios = require("axios");
 const fs = require("fs");
 
-// By default, we use the US-based API service. This is the primary endpoint for global use.
+// AI Search PDF is available on the US Cloud service only.
 const apiUrl = "https://api.pdfrest.com";
 
-/* For GDPR compliance and enhanced performance for European users, you can switch to the EU-based service by uncommenting the URL below.
- * For more information visit https://pdfrest.com/pricing#how-do-eu-gdpr-api-calls-work
- */
-// const apiUrl = "https://eu-api.pdfrest.com";
+// AI Search PDF is unavailable on the EU service and in self-hosted deployments.
 
 const apiKey = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"; // Replace with your API key.
 

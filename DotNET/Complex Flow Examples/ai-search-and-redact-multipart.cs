@@ -5,9 +5,9 @@
  * Setup (environment):
  * - Copy .env.example to .env
  * - Set PDFREST_API_KEY=your_api_key_here
- * - Optional: set PDFREST_URL to override the API region. For EU/GDPR compliance and proximity, use:
- *     PDFREST_URL=https://eu-api.pdfrest.com
- *   For more information visit https://pdfrest.com/pricing#how-do-eu-gdpr-api-calls-work
+ * - AI Search PDF is available on the US Cloud service only.
+ * - Leave PDFREST_URL unset or use https://api.pdfrest.com.
+ * - AI Search PDF is unavailable in EU and self-hosted deployments.
  *
  * Usage:
  *   dotnet run -- ai-search-and-redact-multipart /path/to/input.pdf
