@@ -10,7 +10,7 @@
  *   For more information visit https://pdfrest.com/pricing#how-do-eu-gdpr-api-calls-work
  *
  * Usage:
- *   dotnet run -- batch-delete <id1> [id2] [...]
+ *   dotnet run -- delete <id1> [id2] [...]
  *
  * Output:
  * - Prints JSON responses; non-2xx results exit non-zero.
@@ -20,13 +20,13 @@ using System.Text;
 
 namespace Samples.EndpointExamples.JsonPayload
 {
-    public static class BatchDelete
+    public static class Delete
     {
         public static async Task Execute(string[] args)
         {
             if (args == null || args.Length < 1)
             {
-                Console.Error.WriteLine("batch-delete requires <id1> [id2] [id3] ... OR a single comma-separated list");
+                Console.Error.WriteLine("delete requires <id1> [id2] [id3] ... OR a single comma-separated list");
                 Environment.Exit(1);
                 return;
             }
