@@ -20,6 +20,8 @@ Each filename below exists in both `Endpoint Examples/JSON Payload` and `Endpoin
 
 JSON examples first upload a local PDF to `/upload`, then send its resource ID with an `application/json` payload. Multipart examples send the PDF and options directly. Use the setup and dependency instructions in each language's README.
 
+The cURL samples require both `curl` and `jq`; see the [cURL prerequisites](cURL/README.md#prerequisites).
+
 The direct Search example demonstrates literal, regex, and preset searches together. AI Search demonstrates a `person_name` preset and a custom description for medication names. Direct replacement changes every `Draft` match to `Final` and every `Pending` match to `Ready`; each rule supplies its own exact replacement string.
 
 ## Search followed by an action
